@@ -1,0 +1,20 @@
+.grid-container-product{
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        'nav-bar nav-bar nav-bar nav-bar nav-bar '
+        'filter main-product main-product main-product main-product'
+}
+
+.product-list{
+    grid-area: main-product;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+
+
