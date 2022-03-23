@@ -5,7 +5,6 @@ const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const token = localStorage.getItem("login");
-  console.log(token);
 
   const [data, dispatch] = useReducer(DataReducer, {
     products: [],

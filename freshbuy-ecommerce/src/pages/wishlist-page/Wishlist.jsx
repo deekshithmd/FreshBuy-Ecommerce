@@ -1,7 +1,7 @@
 import "./wishlist.css";
 import { useData } from "../../contexts";
 export default function Wishlist() {
-  const {data}=useData()
+  const { data } = useData();
   return (
     <div className="grid-container">
       <div className="wishlist-products">

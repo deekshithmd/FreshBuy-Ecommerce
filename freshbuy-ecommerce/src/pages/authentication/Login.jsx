@@ -1,6 +1,5 @@
 import "./authentication.css";
 import { getCredentials } from "../../utils/utils";
-
 import axios from "axios";
 import { useAuth } from "../../contexts";
 import { useNavigate } from "react-router-dom";
@@ -12,17 +11,21 @@ export default function Login() {
   const [error, setError] = useState(false);
 
   const HandleLogin = async (event) => {
-    
     try {
       event.preventDefault();
       const { email, password } = event.target.elements;
-      console.log("called")
-      const response = await axios.post("/api/auth/login", getCredentials(email,password));
-      console.log(response.data)
-      if(response.data.encodedToken){
-        localStorage.setItem("login",JSON.stringify(response.data.encodedToken))
-        setToken(true)
-        navigate("/")
+      const response = await axios.post(
+        "/api/auth/login",
+        getCredentials(email, password)
+      );
+      console.log(response.data);
+      if (response.data.encodedToken) {
+        localStorage.setItem(
+          "login",
+          JSON.stringify(response.data.encodedToken)
+        );
+        setToken(true);
+        navigate("/");
       }
       // if (response.data.encodedToken) {
       //   localStorage.setItem(
@@ -41,7 +44,6 @@ export default function Login() {
     } catch (e) {
       setError(true);
       navigate("/login");
-      console.log("login")
     }
   };
   return (

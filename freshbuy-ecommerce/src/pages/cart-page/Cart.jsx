@@ -1,7 +1,7 @@
 import "./cart.css";
 import { useData } from "../../contexts";
 export default function Cart() {
-  const {data}=useData()
+  const { data } = useData();
   return (
     <div className="grid-container">
       <div className="cart-products">
