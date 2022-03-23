@@ -3,8 +3,8 @@
     grid-template-columns: 1fr;
     grid-template-areas: 
         'nav-bar'
-        'hero-section'
         'product-banner'
+        'hero-section'
         'main-products';
     height: auto;
     width: 100vw;

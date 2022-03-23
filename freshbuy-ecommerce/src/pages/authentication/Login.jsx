@@ -1,4 +1,5 @@
 import "./authentication.css";
+import { getCredentials } from "../../utils/utils";
 
 import axios from "axios";
 import { useAuth } from "../../contexts";
@@ -11,30 +12,36 @@ export default function Login() {
   const [error, setError] = useState(false);
 
   const HandleLogin = async (event) => {
-    event.preventDefault();
+    
     try {
+      event.preventDefault();
       const { email, password } = event.target.elements;
-      const response = await axios.post("/api/auth/login", {
-        Email: email.value,
-        Password: password.value,
-      });
-      if (response.data.encodedToken) {
-        localStorage.setItem(
-          "login",
-          JSON.stringify(response.data.encodedToken)
-        );
+      console.log("called")
+      const response = await axios.post("/api/auth/login", getCredentials(email,password));
+      console.log(response.data)
+      if(response.data.encodedToken){
+        localStorage.setItem("login",JSON.stringify(response.data.encodedToken))
+        setToken(true)
+        navigate("/")
       }
-      if (localStorage.getItem("token") === localStorage.getItem("login")) {
-        setToken(true);
-        navigate("/");
-        console.log(response.data);
-      } else {
-        setError(true);
-        navigate("/login");
-      }
+      // if (response.data.encodedToken) {
+      //   localStorage.setItem(
+      //     "login",
+      //     JSON.stringify(response.data.encodedToken)
+      //   );
+      // }
+      // if (localStorage.getItem("token") === localStorage.getItem("login")) {
+      //   setToken(true);
+      //   navigate("/");
+      //   console.log(response.data);
+      // } else {
+      //   setError(true);
+      //   navigate("/login");
+      // }
     } catch (e) {
       setError(true);
       navigate("/login");
+      console.log("login")
     }
   };
   return (

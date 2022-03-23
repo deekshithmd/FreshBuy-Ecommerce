@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const navigate = useNavigate();
   const HandleSignup = async (event) => {
-    event.preventDefault();
     try {
+      event.preventDefault();
       const { firstname, lastname, email, pass } = event.target.elements;
       console.log("got");
       const response = await axios.post(`/api/auth/signup`, {
-        Firstname: firstname.value,
-        Lastname: lastname.value,
-        Email: email.value,
-        Password: pass.value,
+        firstname: firstname.value,
+        lastname: lastname.value,
+        email: email.value,
+        password: pass.value,
       });
       console.log(response.data);
       if (response.data.encodedToken) {
@@ -25,6 +25,7 @@ export default function Signup() {
       }
     } catch (e) {
       console.log(e);
+      console.log("signup")
     }
   };
 

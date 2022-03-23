@@ -7,7 +7,6 @@ export default function Navigation() {
   const { token, setToken } = useAuth();
   const LogoutHandler = () => {
     localStorage.removeItem("login");
-    localStorage.removeItem("id");
     setToken(false);
     navigate("/");
   };
