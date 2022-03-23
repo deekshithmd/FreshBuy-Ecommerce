@@ -12,7 +12,7 @@ export default function Wishlist() {
         <div className="wishlist-items">
           {data.wishlist.map((item) => {
             return (
-              <div className="card-container vertical">
+              <div className="card-container vertical" key={item._id}>
                 <div className="card-img vertical-img border-bottom">
                   <img src={item.image} alt="Apple" />
                 </div>

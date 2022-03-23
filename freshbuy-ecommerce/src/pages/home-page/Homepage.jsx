@@ -1,5 +1,4 @@
 import "./homepage.css";
-
 import { Category, Banner, Occasional } from "../../components";
 export default function HomePage() {
   return (

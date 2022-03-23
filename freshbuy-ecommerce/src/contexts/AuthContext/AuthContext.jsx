@@ -1,24 +1,24 @@
 import { createContext, useContext, useState } from "react";
-//import { useEffect } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [token, setToken] = useState(false);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (localStorage.getItem("login")) {
-  //       setToken(true);
-  //     } else if (localStorage.getItem("token")) {
-  //       navigate("/login");
-  //     } else {
-  //       navigate("/signup");
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      if (localStorage.getItem("login")) {
+        setToken(true);
+      } else if (localStorage.getItem("token")) {
+        navigate("/login");
+      } else {
+        navigate("/signup");
+      }
+    })();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
