@@ -10,7 +10,7 @@ export default function Occasional() {
           Alltime available fruits
         </span>
         <img
-          src="https://lh3.googleusercontent.com/YalrKFZEbBeox8UyCSBr1itmNlo3kU0Oq2qaWytMJNAbJktyeZfrzurvrLaynetSLpDT7Y8OqM6-VmKU9AO4PxAPdvpZSGjpE6db_kFShW3zIPJFef3ACp7Af597dGiDWUX9prz-WOJiqhy4bVWR7HWvYEqIIWbmwpNdZOsGRwa19Ir7EurapQBTQh-pytV4ZRVP-LwPExaJ9xcCXPuF6NqHBu7CdAaMFrq6jDEzSNdo6l7c0ar3yvp2DCkpSO2okIKLb_bt8fBLtr4no1_T_fhW5CBPqKfuezBvxW_X_HTYlvCqZ571H8A7AS0bCkHwdG-SqNX4rVVEGNfJ-YuYGF4kiHL7g79Batx4Tm9NkJskvFTEWr8DgY8plIJP_Mk1GKn4enMfnS34l03pbJXLqVlWPjDt8f0QZG832by3frLCMNPf3JsyrKIJ0eE1ttY9MwmPtFhwnL2cKsecIcZ3qldjftDJcWVFtGA1maMDMXQYNxrh8X2_JaCVzbAqZWSpj28nruM_peH8Ut079te3qWo202cAiRJrO4v0HfroQAj1rzv7wRPAfX4CkdpbDRqmt-1JHad1TWnOE1l1eLV1GGGY_LgP01J-M93Bk7izq0A7nE8jZdKV4ZF0_B6F3MF1W_rLC4UfFf1FZGiX-Lmsa8qavXN3zSmcUhjpVJHjeDjD2sjCWzFMu6DxJxdWXR7yWXWX3khobcmbZvDD5D5DeM7_-NFZQD3csI8slF2hjWNtxbwx4JaQDGh8JRkD=w222-h227-no?authuser=0"
+          src="https://i.postimg.cc/h4L1Dk8D/alltime.jpg"
           alt=""
         />
       </Link>

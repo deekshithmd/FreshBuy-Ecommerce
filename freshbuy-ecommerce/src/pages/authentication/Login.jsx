@@ -52,7 +52,7 @@ export default function Login() {
         <div className="form-data">
           {error && <h3>Wrong credentials</h3>}
           <h2 className="margin-b">Login</h2>
-          <form onSubmit={HandleLogin}>
+          <form autoComplete="off" onSubmit={HandleLogin}>
             <div className="input input-labeled outlined margin">
               <label className="label">Enter Email Address</label>
               <input

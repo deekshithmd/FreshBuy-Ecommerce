@@ -25,6 +25,6 @@
     align-items: center;
 }
 
-.label{
-    background-color:white !important;
+.form-input-message{
+    width: 25rem;
 }

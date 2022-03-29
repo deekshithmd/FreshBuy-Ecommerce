@@ -7,6 +7,7 @@ import {
   addWishlist,
   getProducts,
   editCartlist,
+  getCategories
 } from "./services";
 export {
   getCartlist,
@@ -17,4 +18,5 @@ export {
   addWishlist,
   getProducts,
   editCartlist,
+  getCategories
 };

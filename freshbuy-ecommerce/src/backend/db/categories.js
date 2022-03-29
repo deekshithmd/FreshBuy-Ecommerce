@@ -8,37 +8,37 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "allium",
+    categoryName: "Allium",
     description:
       "Organically grown fresh allium vegetables",
   },
   {
     _id: uuid(),
-    categoryName: "fruit",
+    categoryName: "Fruit",
     description:
       "Organically grown fresh fruits",
   },
   {
     _id: uuid(),
-    categoryName: "leafy",
+    categoryName: "Leafy",
     description:
       "Organically grown fresh leafy vegetables",
   },
   {
     _id: uuid(),
-    categoryName: "cruciferous",
+    categoryName: "Cruciferous",
     description:
       "Organically grown fresh cruciferous vegetables",
   },
   {
     _id: uuid(),
-    categoryName: "marrow",
+    categoryName: "Marrow",
     description:
       "Organically grown fresh marrow vegetables",
   },
   {
     _id: uuid(),
-    categoryName: "root",
+    categoryName: "Root",
     description:
       "Organically grown fresh root vegetables",
   },

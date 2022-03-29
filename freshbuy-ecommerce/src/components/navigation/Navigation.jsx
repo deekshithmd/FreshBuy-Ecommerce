@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts";
+import { useData } from "../../contexts";
+import { useTheme } from "../../contexts";
+import "./navigation.css";
 export default function Navigation() {
   const navigate = useNavigate();
+  const { theme, Toggle } = useTheme();
+  const { data } = useData();
   const { token, setToken } = useAuth();
   const LogoutHandler = () => {
     localStorage.removeItem("login");
@@ -48,7 +53,9 @@ export default function Navigation() {
           <button className="badge-container badge-btn">
             <Link to="/wishlist">
               <i className="fas fa-heart icon"></i>
-              <span className="status-badge-icon bg-red">5</span>
+              <span className="status-badge-icon bg-red">
+                {data.wishlist.length}
+              </span>
             </Link>
           </button>
         </li>
@@ -56,7 +63,9 @@ export default function Navigation() {
           <button className="badge-container badge-btn">
             <Link to="/cart">
               <i className="fas fa-cart-shopping"></i>
-              <span className="status-badge-icon bg-red">5</span>
+              <span className="status-badge-icon bg-red">
+                {data.cart.length}
+              </span>
             </Link>
           </button>
         </li>
@@ -71,9 +80,16 @@ export default function Navigation() {
           </li>
         )}
         <li className="list-inline-item">
-          <Link to="" className="nav-icon-link link-style-none">
-            <i className="fas fa-sun nav-icon dark"></i>
-          </Link>
+          <span className="nav-icon-link link-style-none">
+            <i
+              className={
+                theme === "light"
+                  ? "fas fa-sun nav-icon"
+                  : "fas fa-moon nav-icon"
+              }
+              onClick={() => Toggle()}
+            ></i>
+          </span>
         </li>
       </ul>
     </nav>
