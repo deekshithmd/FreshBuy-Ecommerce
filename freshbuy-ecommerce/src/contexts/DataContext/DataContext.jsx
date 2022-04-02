@@ -16,8 +16,8 @@ const DataProvider = ({ children }) => {
     cart: [],
     wishlist: [],
     categories: [],
-    totalCartPrice:0,
-    totalCartDiscount:0,
+    totalCartPrice: 0,
+    totalCartDiscount: 0,
     price: 200,
     rating: 0,
     sortBy: null,
@@ -61,7 +61,9 @@ const DataProvider = ({ children }) => {
   const priceFiltered =
     data.price === 200
       ? data.products
-      : data.products.filter((item) => parseInt(item.price) < parseInt(data.price));
+      : data.products.filter(
+          (item) => parseInt(item.price) < parseInt(data.price)
+        );
 
   const category =
     data.allium ||
@@ -93,26 +95,27 @@ const DataProvider = ({ children }) => {
     ? [...allium, ...cruciferous, ...marrow, ...fruits, ...leafy, ...root]
     : priceFiltered;
 
-  const ratingfiltered=data.rating===0?categoryfiltered:categoryfiltered.filter(item=>item.rating>data.rating)
+  const ratingfiltered =
+    data.rating === 0
+      ? categoryfiltered
+      : categoryfiltered.filter((item) => item.rating > data.rating);
 
   function getSorted(product, sortBy) {
     const output =
       sortBy === null
         ? product
-        : product.sort((a, b) =>{
-            if(sortBy === "LOW_TO_HIGH")
-              return parseInt(a.price) - parseInt(b.price)
-            else if(sortBy==="HIGH_TO_LOW")
-                    return parseInt(b.price) - parseInt(a.price)
-                  else
-                    return parseFloat(b.rating)-parseFloat(a.rating)
-        }
-          );
+        : product.sort((a, b) => {
+            if (sortBy === "LOW_TO_HIGH")
+              return parseInt(a.price) - parseInt(b.price);
+            else if (sortBy === "HIGH_TO_LOW")
+              return parseInt(b.price) - parseInt(a.price);
+            else return parseFloat(b.rating) - parseFloat(a.rating);
+          });
     return output;
   }
 
-  const filtered=getSorted(ratingfiltered,data.sortBy)
-  
+  const filtered = getSorted(ratingfiltered, data.sortBy);
+
   return (
     <DataContext.Provider value={{ data, dispatch, token, filtered }}>
       {children}

@@ -1,9 +1,9 @@
 import "./productlist.css";
 import { Filter, ProductCard } from "../../components";
 import { useData } from "../../contexts";
+
 export default function ProductList() {
   const { data,filtered } = useData();
-
   return (
     <div className="grid-container-product">
       <Filter />
