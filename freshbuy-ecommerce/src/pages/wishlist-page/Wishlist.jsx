@@ -33,7 +33,7 @@ export default function Wishlist() {
       payload: responsewishlist.data.wishlist,
     });
   }
-  return (
+  return data.wishlist.length > 0 ? (
     <div className="grid-container">
       <div className="wishlist-products">
         <p className="product-page-heading text-md text-bold">
@@ -77,7 +77,10 @@ export default function Wishlist() {
                   <button className="btn btn-icon-text-primary-outline">
                     <span
                       className="btn-icon text-md"
-                      onClick={() => {addCart(item, token);deleteWish(item._id,token)}}
+                      onClick={() => {
+                        addCart(item, token);
+                        deleteWish(item._id, token);
+                      }}
                     >
                       Move to Basket
                     </span>
@@ -89,5 +92,9 @@ export default function Wishlist() {
         </div>
       </div>
     </div>
+  ) : (
+    <p className="product-page-heading text-lg text-bold">
+      No product wishlisted
+    </p>
   );
 }

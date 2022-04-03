@@ -5,6 +5,8 @@ import {
   getCategories,
   getProducts,
   getWishlist,
+  addCartlist,
+  addWishlist
 } from "../../services";
 const DataContext = createContext();
 
@@ -16,8 +18,6 @@ const DataProvider = ({ children }) => {
     cart: [],
     wishlist: [],
     categories: [],
-    totalCartPrice: 0,
-    totalCartDiscount: 0,
     price: 200,
     rating: 0,
     sortBy: null,
@@ -27,6 +27,9 @@ const DataProvider = ({ children }) => {
     leafy: false,
     marrow: false,
     root: false,
+    alltime: false,
+    winter: false,
+    summer: false,
   });
 
   useEffect(() => {
@@ -42,10 +45,39 @@ const DataProvider = ({ children }) => {
           type: "LOAD_CATEGORY",
           payload: categoryResponse.data.categories,
         });
+        // const cartResponse = await getCartlist({ encodedToken: token });
+        // dispatch({
+        //   type: "LOAD_CART",
+        //   payload: cartResponse.data.cart,
+        // });
+        // const wishlistResponse = await getWishlist({ encodedToken: token });
+        // dispatch({
+        //   type: "LOAD_WISHLIST",
+        //   payload: wishlistResponse.data.wishlist,
+        // });
+
+        // dispatch({
+        //   type: "LOAD_CART",
+        //   payload: JSON.parse(localStorage.getItem("cart")),
+        // });
+
+        // dispatch({
+        //   type: "LOAD_WISHLIST",
+        //   payload: JSON.parse(localStorage.getItem("wishlist")),
+        // });
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        cart&&cart.map(async (item) => {
+          await addCartlist({ product: item, encodedToken: token });
+        });
         const cartResponse = await getCartlist({ encodedToken: token });
         dispatch({
           type: "LOAD_CART",
           payload: cartResponse.data.cart,
+        });
+
+        const wishlist = JSON.parse(localStorage.getItem("wishlist"));
+        wishlist&&wishlist.map(async (item) => {
+          await addWishlist({ product: item, encodedToken: token });
         });
         const wishlistResponse = await getWishlist({ encodedToken: token });
         dispatch({
@@ -73,6 +105,8 @@ const DataProvider = ({ children }) => {
     data.fruit ||
     data.root;
 
+  const season = data.alltime || data.winter || data.summer;
+
   const allium = priceFiltered.filter((item) =>
     item.categoryName === "Allium" && data.allium ? true : false
   );
@@ -95,10 +129,24 @@ const DataProvider = ({ children }) => {
     ? [...allium, ...cruciferous, ...marrow, ...fruits, ...leafy, ...root]
     : priceFiltered;
 
+  const alltime = categoryfiltered.filter((item) =>
+    item.season === "AllTime" && data.alltime ? true : false
+  );
+  const summer = categoryfiltered.filter((item) =>
+    item.season === "Summer" && data.summer ? true : false
+  );
+  const winter = categoryfiltered.filter((item) =>
+    item.season === "Winter" && data.winter ? true : false
+  );
+
+  const seasonFiltered = season
+    ? [...alltime, ...summer, ...winter]
+    : categoryfiltered;
+
   const ratingfiltered =
     data.rating === 0
-      ? categoryfiltered
-      : categoryfiltered.filter((item) => item.rating > data.rating);
+      ? seasonFiltered
+      : seasonFiltered.filter((item) => item.rating > data.rating);
 
   function getSorted(product, sortBy) {
     const output =

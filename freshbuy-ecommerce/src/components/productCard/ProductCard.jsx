@@ -9,9 +9,11 @@ import {
 import { useData } from "../../contexts";
 import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
-  const { data, dispatch, token } = useData();
-
-  const wish = data.wishlist.some((item) => item._id === product._id)
+  const { data, dispatch } = useData();
+  const token = localStorage.getItem("login");
+  // console.log("cart",data.cart)
+  // console.log("wish",data.wishlist)
+  const wish = data.wishlist.some((item) => item.title === product.title)
     ? "fas fa-heart wishlisted"
     : "far fa-heart";
 
@@ -41,6 +43,7 @@ const ProductCard = ({ product }) => {
     if (!responsew.data.cart.find((item) => item._id === product._id)) {
       const res = await addCartlist({ product: product, encodedToken: tokens });
       dispatch({ type: "LOAD_CART", payload: res.data.cart });
+      //dispatch({type:"ADD_CART_DATA",payload:product})
     } else {
       const res = await editCartlist({
         productId: product._id,
@@ -49,6 +52,7 @@ const ProductCard = ({ product }) => {
       });
       console.log(res.data.cart);
       dispatch({ type: "LOAD_CART", payload: res.data.cart });
+      //dispatch({type:"ADD_CART_DATA",payload:product})
     }
   }
 
@@ -86,7 +90,7 @@ const ProductCard = ({ product }) => {
           </span>
           <span className="discount-percentage">{product.discount}% off</span>
         </h4>
-        {data.cart.some((item) => item._id === product._id) ? (
+        {data.cart.some((item) => item.title === product.title) ? (
           <Link to="/cart">
             <button className="btn btn-icon-text-primary-outline">
               <span className="btn-icon">
@@ -98,7 +102,9 @@ const ProductCard = ({ product }) => {
         ) : (
           <button
             className="btn btn-icon-text-primary-outline"
-            onClick={() => addCart(product, token)}
+            onClick={() => {
+              addCart(product, token);
+            }}
           >
             <span className="btn-icon">
               <i className="fa fa-shopping-basket margin-r"></i>

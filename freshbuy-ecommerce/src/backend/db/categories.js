@@ -9,37 +9,43 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Allium",
-    description:
-      "Organically grown fresh allium vegetables",
+    description: "Organically grown fresh allium vegetables",
   },
   {
     _id: uuid(),
     categoryName: "Fruit",
-    description:
-      "Organically grown fresh fruits",
+    description: "Organically grown fresh fruits",
   },
   {
     _id: uuid(),
     categoryName: "Leafy",
-    description:
-      "Organically grown fresh leafy vegetables",
+    description: "Organically grown fresh leafy vegetables",
   },
   {
     _id: uuid(),
     categoryName: "Cruciferous",
-    description:
-      "Organically grown fresh cruciferous vegetables",
+    description: "Organically grown fresh cruciferous vegetables",
   },
   {
     _id: uuid(),
     categoryName: "Marrow",
-    description:
-      "Organically grown fresh marrow vegetables",
+    description: "Organically grown fresh marrow vegetables",
   },
   {
     _id: uuid(),
     categoryName: "Root",
-    description:
-      "Organically grown fresh root vegetables",
+    description: "Organically grown fresh root vegetables",
   },
+  // {
+  //   _id: uuid(),
+  //   categoryName: "AllTime",
+  // },
+  // {
+  //   _id: uuid(),
+  //   categoryName: "Summer",
+  // },
+  // {
+  //   _id: uuid(),
+  //   categoryName: "Winter",
+  // },
 ];

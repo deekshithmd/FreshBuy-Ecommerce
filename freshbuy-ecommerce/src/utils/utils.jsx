@@ -1,11 +1,11 @@
 
 export const getCredentials = (email, password) => {
-  if (email.value && password.value) {
     return { email: email.value, password: password.value };
-  } else {
-    return { email: "adarshbalika@gmail.com", password: "adarshbalika" };
-  }
 };
+
+export const getTestData=()=>{
+  return { email: "adarshbalika@gmail.com", password: "adarshbalika" };
+}
 
 // export const getSorted = (productlist, sortBy) => {
 //     const sortedData =

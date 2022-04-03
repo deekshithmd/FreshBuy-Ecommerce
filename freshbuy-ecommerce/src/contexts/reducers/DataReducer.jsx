@@ -22,11 +22,32 @@ export const DataReducer = (state, action) => {
     case "LOAD_PRODUCTS":
       return { ...state, products: action.payload };
     case "LOAD_WISHLIST":
+      localStorage.setItem("wishlist", JSON.stringify(action.payload));
       return { ...state, wishlist: action.payload };
     case "LOAD_CART":
+      localStorage.setItem("cart", JSON.stringify(action.payload));
       return { ...state, cart: action.payload };
     case "LOAD_CATEGORY":
       return { ...state, categories: action.payload };
+    // case "ADD_CART_DATA":
+    //   return {
+    //     ...state,
+    //     totalCartPrice: state.totalCartPrice + action.payload.price,
+    //     totalCartDiscount:
+    //       state.totalCartDiscount +
+    //       (action.payload.price * action.payload.discount) / 100,
+    //     cartQty:state.cartQty+1
+    //   };
+    // case "REMOVE_CART_DATA":
+    //   return {
+    //     ...state,
+    //     totalCartPrice: state.totalCartPrice - action.payload.price,
+    //     totalCartDiscount:
+    //       state.totalCartDiscount -
+    //       (action.payload.price * action.payload.discount) / 100,
+    //       cartQty:state.cartQty-1
+    //   };
+
     case "PRICE":
       return { ...state, price: action.payload };
     case "RATING":
@@ -45,6 +66,12 @@ export const DataReducer = (state, action) => {
       return { ...state, marrow: !state.marrow };
     case "LEAFY":
       return { ...state, leafy: !state.leafy };
+    case "ALLTIME":
+      return { ...state, alltime: !state.alltime };
+    case "SUMMER":
+      return { ...state, summer: !state.summer };
+    case "WINTER":
+      return { ...state, winter: !state.winter };
     case "CLEAR":
       return {
         ...state,
@@ -59,7 +86,12 @@ export const DataReducer = (state, action) => {
         leafy: false,
         marrow: false,
         root: false,
+        alltime: false,
+        summer: false,
+        winter: false,
       };
+    case "LOGOUT":
+      return { ...state, wishlist: [], cart: [] };
     // case "CART_DATA":
     //   return {
     //     ...state,

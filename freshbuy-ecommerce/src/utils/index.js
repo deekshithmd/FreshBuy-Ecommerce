@@ -1,3 +1,3 @@
-// import { getSorted } from "./utils";
-
-// export {getSorted}
+import { getCredentials } from "./utils";
+import { getTestData } from "./utils";
+export { getCredentials, getTestData };
